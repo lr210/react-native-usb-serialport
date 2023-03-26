@@ -35,7 +35,7 @@ import com.felhr.usbserial.UsbSerialInterface;
 public class RNSerialportModule extends ReactContextBaseJavaModule {
 
   // https://github.com/google/guava/blob/6405852bbf453b14d097b8ec3bcae494334b357d/android/guava/src/com/google/common/primitives/UnsignedBytes.java
-  public static int UsignedByteToInt(byte value) {
+  private static int unsignedByteToInt(byte value) {
       return value & 0xFF;
   }
 
@@ -611,7 +611,7 @@ public class RNSerialportModule extends ReactContextBaseJavaModule {
 
           WritableArray intArray = new WritableNativeArray();
           for(byte b: bytes) {
-            intArray.pushInt(UnsignedByteToInt(b));
+            intArray.pushInt(unsignedByteToInt(b));
           }
           params.putArray(payloadKey, intArray);
 
